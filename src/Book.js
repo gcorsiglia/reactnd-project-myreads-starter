@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Book extends Component {
 	
 	render() {
-		const { books } = this.props
+		const { details } = this.props
 
     return (
       <li>
@@ -27,6 +27,7 @@ class Book extends Component {
           </div>
                       
           <div className="book-title">
+            
           </div>
                   
           <div className="book-authors"> 
