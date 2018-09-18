@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Shelf from './Shelf'
+import Shelf from './Shelf';
 
 class MainPage extends Component {
 	
 	render() {
-		console.log(this.props.books)
-
+		
 		const { books } = this.props;
 
 		return(
@@ -18,7 +17,7 @@ class MainPage extends Component {
       	<div className="list-books-content">
         	<div>
         		<Shelf
-        			id="current"
+        			shelfID="current"
         			shelfArray={
         				books.filter((book) => 
         					book.shelf === 'currentlyReading'
@@ -27,7 +26,7 @@ class MainPage extends Component {
         		/>
         		
         		<Shelf 
-        			id="want"
+        			shelfID="want"
 							shelfArray={
         				books.filter((book) => 
         					book.shelf === 'wantToRead'
@@ -36,7 +35,7 @@ class MainPage extends Component {
         		/>
         		
         		<Shelf 
-        			id="read"
+        			shelfID="read"
 							shelfArray={
         				books.filter((book) => 
         					book.shelf === 'read'

@@ -5,8 +5,8 @@ class Shelf extends Component {
 	
 	whichShelf(props) {
 		return (
-			this.props.id === 'current' ? this.innerHTML = "Currently Reading" :
-			this.props.id === 'want' ? this.innerHTML = "Want To Read" :
+			this.props.shelfID === 'current' ? this.innerHTML = "Currently Reading" :
+			this.props.shelfID === 'want' ? this.innerHTML = "Want To Read" :
 			this.innerHTML = "Read"
 		)
 	}
@@ -22,9 +22,13 @@ class Shelf extends Component {
         <div className="bookshelf-books">
           <ol className="books-grid">
               {this.props.shelfArray.map((book) => (
-								<Book 
-									bookDetails={this.props.book}
-								/>
+								<li key={book.id}>
+                    <Book
+                      book={book}
+                      moveShelf={this.props.moveShelf}
+                      currentShelf={book.shelf}
+                    />
+                </li>
               ))}
           </ol>
         </div>
