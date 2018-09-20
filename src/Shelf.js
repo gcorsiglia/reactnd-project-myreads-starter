@@ -26,7 +26,6 @@ class Shelf extends Component {
                     <Book
                       book={book}
                       moveShelf={this.props.moveShelf}
-                      currentShelf={book.shelf}
                     />
                 </li>
               ))}

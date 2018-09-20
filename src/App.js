@@ -14,11 +14,21 @@ class BooksApp extends Component {
       books: []
     }
   }
+
+  getAllBooks() {
+    BooksAPI.getAll().then((books) => {
+      this.setState({ books });
+    });
+  }
   
   componentDidMount() {
-    BooksAPI.getAll().then((books) => {
-      this.setState({ books })
-    })
+    this.getAllBooks();
+  }
+
+  moveShelf = (book, shelf) => {
+    BooksAPI.update(book, shelf);
+    
+    this.getAllBooks();
   }
 
   render() {
@@ -27,12 +37,14 @@ class BooksApp extends Component {
         <Route exact path="/" render={() => (
           <MainPage 
             books={this.state.books}
+            moveShelf={this.moveShelf}
           />
         )}/>
 
         <Route path="/search" render={() => (
           <SearchPage 
             books={this.state.books}
+            moveShelf={this.moveShelf}
           />
         )}/>
       </div>
