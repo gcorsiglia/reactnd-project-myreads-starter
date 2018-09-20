@@ -13,7 +13,7 @@ class Shelf extends Component {
 
 	render() {
 
-		const { moveShelf, books, currentShelf } = this.props;
+		const { books, moveShelf, currentShelf } = this.props;
 		
 		return(
 			<div className="bookshelf">
@@ -32,6 +32,7 @@ class Shelf extends Component {
                     <Book
                       book={book}
                       moveShelf={moveShelf}
+                      currentShelf={currentShelf}
                     />
                 </li>
               ))}

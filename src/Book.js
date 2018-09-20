@@ -4,7 +4,7 @@ class Book extends Component {
 	
 	render() {
 
-    const { book, moveShelf } = this.props;
+    const { book, moveShelf, currentShelf } = this.props;
 
     let bookCover = book.imageLinks 
                     ? book.imageLinks.smallThumbnail : null;
@@ -23,7 +23,7 @@ class Book extends Component {
               onChange={(event) =>
                 moveShelf(book, event.target.value)
               }
-              value={book.shelf}
+              value={currentShelf}
             >
               <option value="move" disabled>Move to...</option>
               <option value="currentlyReading">Currently Reading</option>

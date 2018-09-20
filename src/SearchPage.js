@@ -39,7 +39,7 @@ class SearchPage extends Component {
 
 	render() {
 		
-		const { moveShelf, currentShelf } = this.props;
+		const { books, moveShelf } = this.props;
 		const { query, searchResults } = this.state;
 
 		searchResults.sort(sortBy('title'));
@@ -66,15 +66,26 @@ class SearchPage extends Component {
 	            
 	      <div className="search-books-results">
 	        <ol className="books-grid">
-						{searchResults.map((book) => (
-							<li key={book.id}>
-								<Book
-									book={book}
-									moveShelf={moveShelf}
-                  currentShelf={currentShelf}
-								/>
-							</li>
-						))}
+						{searchResults.map((resultBook) => {
+							
+							let shelf = "none";
+
+							books.map((book) => (
+								book.id === resultBook.id
+								? shelf = book.shelf : ''
+							));
+
+							return (
+								<li key={resultBook.id}>
+									<Book
+										book={resultBook}
+										moveShelf={moveShelf}
+										currentShelf={shelf}
+									/>
+								</li>
+							);
+						})
+					}
 	        </ol>
 	      </div>
       </div>
