@@ -15,7 +15,7 @@ class SearchPage extends Component {
   }
 
   updateQuery(query) {
-  	this.setState({ query: query.trim() });
+  	this.setState({ query });
   	this.updateSearchResults(query);
   }
 
@@ -39,7 +39,7 @@ class SearchPage extends Component {
 
 	render() {
 		
-		const { books } = this.props;
+		const { moveShelf, currentShelf } = this.props;
 		const { query, searchResults } = this.state;
 
 		searchResults.sort(sortBy('title'));
@@ -70,6 +70,8 @@ class SearchPage extends Component {
 							<li key={book.id}>
 								<Book
 									book={book}
+									moveShelf={moveShelf}
+                  currentShelf={currentShelf}
 								/>
 							</li>
 						))}

@@ -5,13 +5,15 @@ class Shelf extends Component {
 	
 	whichShelf(props) {
 		return (
-			this.props.shelfID === 'current' ? this.innerHTML = "Currently Reading" :
-			this.props.shelfID === 'want' ? this.innerHTML = "Want To Read" :
-			this.innerHTML = "Read"
+			this.props.currentShelf === 'currentlyReading' ? this.innerHTML = "Currently Reading"
+			: this.props.currentShelf === 'wantToRead' ? this.innerHTML = "Want To Read"
+			: this.innerHTML = "Read"
 		)
 	}
 
 	render() {
+
+		const { moveShelf, books, currentShelf } = this.props;
 		
 		return(
 			<div className="bookshelf">
@@ -21,11 +23,15 @@ class Shelf extends Component {
         
         <div className="bookshelf-books">
           <ol className="books-grid">
-              {this.props.shelfArray.map((book) => (
+              {books
+              	.filter((book) => 
+        					book.shelf === currentShelf
+        				)
+              	.map((book) => (
 								<li key={book.id}>
                     <Book
                       book={book}
-                      moveShelf={this.props.moveShelf}
+                      moveShelf={moveShelf}
                     />
                 </li>
               ))}

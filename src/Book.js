@@ -4,10 +4,10 @@ class Book extends Component {
 	
 	render() {
 
-    const { book } = this.props;
+    const { book, moveShelf } = this.props;
 
     let bookCover = book.imageLinks 
-                    ? book.imageLinks.smallThumbnail : '';
+                    ? book.imageLinks.smallThumbnail : null;
 		
     return (
   		<div className="book">
@@ -21,7 +21,7 @@ class Book extends Component {
           <div className="book-shelf-changer">
             <select
               onChange={(event) =>
-                this.props.moveShelf(this.props.book, event.target.value)
+                moveShelf(book, event.target.value)
               }
               value={book.shelf}
             >
