@@ -60,13 +60,11 @@ class SearchPage extends Component {
 	          	onChange={(event) => this.updateQuery(event.target.value)}
 	          />
 	        </div>
-
-
 	      </div>
 	            
 	      <div className="search-books-results">
 	        <ol className="books-grid">
-						{searchResults.map((resultBook) => {
+						{query && searchResults.map((resultBook) => {
 							
 							let shelf = "none";
 
