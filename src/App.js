@@ -48,7 +48,7 @@ class BooksApp extends Component {
           />
         )}/>
       </div>
-    );
+    )
   }
 }
 
