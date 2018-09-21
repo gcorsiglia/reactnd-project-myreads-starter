@@ -14,21 +14,19 @@ class BooksApp extends Component {
       books: []
     }
   }
-
-  getAllBooks() {
+  
+  componentDidMount() {
     BooksAPI.getAll().then((books) => {
       this.setState({ books });
     });
   }
-  
-  componentDidMount() {
-    this.getAllBooks();
-  }
 
   moveShelf = (book, shelf) => {
-    BooksAPI.update(book, shelf);
-    
-    this.getAllBooks();
+    BooksAPI.update(book, shelf).then(() => {
+      BooksAPI.getAll().then((books) => {
+        this.setState({ books })
+      });
+    });
   }
 
   render() {
