@@ -3,22 +3,20 @@ import Book from './Book';
 
 class Shelf extends Component {
 	
-	whichShelf(props) {
-		return (
-			this.props.currentShelf === 'currentlyReading' ? this.innerHTML = "Currently Reading"
-			: this.props.currentShelf === 'wantToRead' ? this.innerHTML = "Want To Read"
-			: this.innerHTML = "Read"
-		)
-	}
-
 	render() {
 
 		const { books, moveShelf, currentShelf } = this.props;
+
+    const shelfNames = {
+      "currentlyReading": "Currently Reading",
+      "wantToRead": "Want To Read",
+      "read": "Read"
+    }
 		
 		return(
 			<div className="bookshelf">
         <h2 className="bookshelf-title">
-					{this.whichShelf()}
+					{shelfNames[currentShelf]}
         </h2>
         
         <div className="bookshelf-books">
