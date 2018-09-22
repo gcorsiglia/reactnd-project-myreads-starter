@@ -23,9 +23,10 @@ class BooksApp extends Component {
 
   moveShelf = (book, shelf) => {
     BooksAPI.update(book, shelf).then(() => {
-      BooksAPI.getAll().then((books) => {
-        this.setState({ books })
-      });
+      book.shelf = shelf
+      this.setState(previousState => ({
+        books: previousState.books.filter(b => b.id !== book.id).concat([book])
+      }));
     });
   }
 
