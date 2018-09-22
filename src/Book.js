@@ -7,7 +7,10 @@ class Book extends Component {
     const { book, moveShelf, currentShelf } = this.props;
 
     let bookCover = book.imageLinks 
-                    ? book.imageLinks.smallThumbnail : null;
+                    ? book.imageLinks.smallThumbnail : 'http://via.placeholder.com/128x193?text=No%20Cover';
+
+    let bookAuthors = book.authors
+                      ? book.authors.join(', ' : '') : null;
 		
     return (
   		<div className="book">
@@ -38,8 +41,8 @@ class Book extends Component {
           {book.title}
         </div>
                   
-        <div className="book-authors"> 
-          {book.authors}
+        <div className="book-authors">
+          {bookAuthors}
         </div>
       </div>
 		);
